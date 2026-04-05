@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dey Poyser</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #0c37de;
+    --white: #f0eef8;
+    --dim: rgba(240, 238, 248, 0.5);
+    --highlight: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 52px 44px 80px;
+    max-width: 720px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .name {
+    font-size: 36px;
+    letter-spacing: 0.1em;
+    color: var(--highlight);
+    margin-bottom: 2px;
+  }
+
+  .coords {
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    margin-bottom: 32px;
+  }
+
+  .divider {
+    color: var(--dim);
+    margin: 28px 0;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    user-select: none;
+  }
+
+  .description {
+    font-size: 20px;
+    line-height: 1.65;
+    color: var(--white);
+    max-width: 560px;
+  }
+
+  .description em {
+    color: var(--highlight);
+    font-style: normal;
+    background: rgba(255,255,255,0.12);
+    padding: 0 4px;
+  }
+
+  .archive-label {
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    color: var(--dim);
+    margin-bottom: 14px;
+    margin-top: 44px;
+  }
+
+  .archive-list {
+    list-style: none;
+  }
+
+  .archive-list li {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .archive-list li::before {
+    content: attr(data-num);
+    font-size: 16px;
+    color: var(--dim);
+    min-width: 60px;
+    flex-shrink: 0;
+  }
+
+  .archive-list a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color 0.1s, border-color 0.1s;
+  }
+
+  .archive-list a:hover {
+    color: var(--highlight);
+    border-bottom-color: var(--white);
+  }
+
+  .arrow {
+    margin-left: 12px;
+    font-size: 18px;
+    color: var(--dim);
+    opacity: 0;
+    display: inline-block;
+    transition: opacity 0.1s, transform 0.1s;
+  }
+
+  .archive-list li:hover .arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  .site-footer { margin-top: 52px; }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  .footer-links a {
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.1s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-note {
+    margin-top: 18px;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    opacity: 0.5;
+  }
+
+  .ascii-section {
+    margin-top: 80px;
+    border-top: 1px solid rgba(240,238,248,0.15);
+    padding-top: 32px;
+  }
+
+  .ascii-label {
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    color: var(--dim);
+    opacity: 0.6;
+    margin-bottom: 18px;
+  }
+
+  .ascii-art {
+    font-family: 'VT323', monospace;
+    font-size: 12px;
+    line-height: 1.2;
+    color: rgba(240, 238, 248, 0.35);
+    white-space: pre;
+    overflow-x: auto;
+    letter-spacing: 0.04em;
+  }
+
+  .ascii-cite {
+    margin-top: 20px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    opacity: 0.5;
+  }
+
+  .ascii-cite a {
+    color: var(--dim);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="name">DEY POYSER</div>
+  <div class="coords">SANTIAGO, CL &nbsp;&nbsp;·&nbsp;&nbsp; 2026</div>
+
+  <div class="divider">---------------- &nbsp; * &nbsp; ----------------</div>
+
+  <p class="description">
+    PhD researcher in <em>empirical aesthetics</em>.<br>
+    Journalist. Writer. Editor.<br><br>
+    Working at the intersection of neuroscience,<br>
+    phenomenology, and what it means to be<br>
+    moved by a work of art.
+  </p>
+</header>
+
+<main>
+  <div class="archive-label">// ARCHIVE INDEX</div>
+
+  <ul class="archive-list">
+    <li data-num="[001]">
+      <a href="research.html">RESEARCH</a>
+      <span class="arrow">→</span>
+    </li>
+    <li data-num="[002]">
+      <a href="essay.html">ESSAY</a>
+      <span class="arrow">→</span>
+    </li>
+    <li data-num="[003]">
+      <a href="podcast.html">PODCAST</a>
+      <span class="arrow">→</span>
+    </li>
+    <li data-num="[004]">
+      <a href="coding.html">CODING</a>
+      <span class="arrow">→</span>
+    </li>
+    <li data-num="[005]">
+      <a href="editing.html">EDITING</a>
+      <span class="arrow">→</span>
+    </li>
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <div class="divider">---------------- &nbsp; * &nbsp; ----------------</div>
+  <div class="footer-links">
+    <a href="https://github.com/deysha" target="_blank">GITHUB</a>
+    <a href="https://linkedin.com/in/deyshaposer" target="_blank">LINKEDIN</a>
+    <a href="mailto:">CONTACT</a>
+  </div>
+  <div class="footer-note">DEYSHA.GITHUB.IO &nbsp;·&nbsp; UPDATED 2026</div>
+</footer>
+
+<div class="ascii-section">
+  <div class="ascii-label">// APPENDIX</div>
+  <pre class="ascii-art">
+     .-._
+     J   L-"""-,,__.-"-.-=a.  ,:--"---=.
+      )        P'-    `  ,`88P' `.|   .'
+      L         .-    `.a8 `8: -=a)\__:
+      L         --     .:`  `"a ,`b.`J        .___..=-.           ,-,
+      |          -      .`.   >,   .a(       ( Y:`:"` `ba--.   ,:'  |
+       \_                .:. (8' -'' `)    _J d`,:d(   `Y ` `ada._  J
+       )8\._          8   .:. "=.   )8:   /`. `b`'`":.  `     ":._.-|L
+       :"P=``-        `a   `:.  ``,aP:J   L    `: `  `` . `     `<8 J)
+       (               `a.   `-  ,8"aP| .':.    `. `              _ :(
+       L        ,        `a...::-8aP"dJ:.        :. `    .  ` _ ,'  `P
+      J.a=.      ``,      `"88:::.(``"::.`       `8. .         `-.  /
+       >-. \::.aa.`.'-.      `":(.`,  ,L:.`     . `8. \  `    `:. Y(
+      (   \ \(` `":.',.',      ,`--. .:|:.`.     `=._Y=\  `     ):a)
+      .b     \:    `:. '..` ,,_.::::da`J `"-:.-.-'      `. .   -.a8
+      |`)   . ` _.---':: )`..``':'"="'.a\                 `-.     :
+      L   \):--'       `-'--.:.`.'.` :P' )                   `-. a)
+     /.:=.J                    ```""""-"'                       `-'
+     `'
+
+                              _.-,
+    (`-.                   .-'  /             _.---..___              _
+    \   `-.--.       _--.-'  `..|  _._.--'\a.'    `.::...`=...._,==='".)
+    |     ') `"-":a8aa7  `    ):L (        `"`     `"Y::.,.,..+::.'8:./
+    | __          .Y8'       .:8) `.                    ``""""888ba`8P
+    L_-.`      ..Y"'          P/    L                  ..-..T\`8a."Ya:
+    .P =.      "(:.,'        ,":    |                .:.:'' _J `Yb:'J8:.
+    | -:.   _::;::J+         ,':L    L              a:'' .-'  O`.`"=a8b:>
+    L    `- ''      ,          .J    |            .b::`-'\ -.:a:'  "`::J
+    7be._a   `.:;+::. '        .|    J        .ad8##88a. a\ `J8: :==++-`)
+   ( Y8:.     .)bP"'            J     L      ,.::#P'^T``.8| :88a._  `:):|
+   )\ ""''' .aP'     .c`      .a8      \    ,::.:8: da  88J 88P::'`..::PJ
+   \\     :P' .a:="\ +P .8  , ' (      (     ,")88.J"`-' `LaP"`-,_.`:..-8
+  J   _.:' _:P'     `-'-"-'"-'-=a)      > \,''/8P'              `--""`-._)
+  (_:==--'"                            J' \ ,''           _./\.
+                                       (_.P'             /. `.\
+    .-.                                   _       __   .'`::.  \
+    )  `+-.__        ___..-------'"J  (`-'_`._a-='  "::(   ```.:J
+    J   `   '`-.  _.'   ...._=___`\|   L //  :P+J:    ``+.   :;:J
+     L   .:'  ::''    .:' .       .J   |/'   `L   `-      `- `:.I
+     `P`      `      (:  8P  -., ../   +-,:'  `    .     ,:.  `:.
+      /_=""'          \a8'    `::)bL    (`:.       `:.   :b::=,.`)
+      L =-"           88'   ).. `::L    J `\         `"+. `:+b:::J
+      `L          _ad8b/ ..:a: .a888L    J    ,aa8aaaaa=,_ _``:b8/
+      /`.    ,: .a8:8:(.=:''  adP:)8:     L  aP,-   ``""Y8aa+. )P8\
+      (  `-  (::8d:P:: " .  .P"/ a/:J     `-aP/      .):`.,"' .)>d)
+      (       `+:::;:= Yb . `// 8/ d#8a._   (_`      d:.dPPaaa:##(
+     / \    `-._  `--:. 8) ) ',:P `8P.'a/ .-&lt; `" -   `""__..aa###(
+    /L\_`  .`.:;:;a.  `aP.''+:=..a:P.a8  / \ )    (. ,=::ad',8#YPa:-.
+   &lt;aP-._\ "a...;+::88a8a.\. ``)Pd8aP' ,'       `-`8 aP.d'a:8Pada8P:J
+         `--'""""""     "8a):._)L8P"   \..PPPYaa;'-P'Ya..-"""'''"Y:_/
+                          `    ""
+
+                                    a:f
+  </pre>
+  <div class="ascii-cite">
+    Andreas Freise, ASCII Work (2001) — based on Albrecht Dürer, "Sechs Kissen" (1493) —
+    <a href="https://ascii-art.de/ascii/my/big2.shtml" target="_blank">ascii-art.de</a>
+  </div>
+</div>
+
+</body>
+</html>
