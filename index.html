@@ -4,62 +4,109 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dey Poyser</title>
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 <style>
-  :root { --blue: #0c37de; --white: #f0eef8; --dim: rgba(240,238,248,0.5); --highlight: #ffffff; }
+  :root {
+    --blue: #0d3b9e;
+    --white: #f5f3ee;
+    --dim: rgba(245,243,238,0.45);
+    --mid: rgba(245,243,238,0.7);
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     background-color: var(--blue);
-    background-image: radial-gradient(circle, rgba(240,238,248,0.18) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(245,243,238,0.12) 1px, transparent 1px);
     background-size: 32px 32px;
     color: var(--white);
-    font-family: 'VT323', monospace;
-    font-size: 20px;
-    line-height: 1.5;
-    padding: 64px 80px 100px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 64px 80px 120px;
     min-height: 100vh;
     width: 100%;
   }
 
-  /* scanline */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px);
-    pointer-events: none;
-    z-index: 0;
+  .name {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    margin-bottom: 4px;
   }
 
-  * { position: relative; z-index: 1; }
+  .coords {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--dim);
+    margin-bottom: 36px;
+  }
 
-  .name { font-size: 38px; letter-spacing: 0.1em; color: var(--highlight); margin-bottom: 2px; }
-  .coords { font-size: 16px; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 32px; }
-  .divider { color: var(--dim); margin: 28px 0; font-size: 17px; user-select: none; }
-  .description { font-size: 20px; line-height: 1.65; color: var(--white); max-width: 520px; }
-  .description em { color: var(--highlight); font-style: normal; background: rgba(255,255,255,0.12); padding: 0 4px; }
+  .divider {
+    color: var(--dim);
+    margin: 28px 0;
+    font-size: 12px;
+    user-select: none;
+    letter-spacing: 0.05em;
+  }
 
-  /* frames row — grid-aligned, non-overlapping */
-  .frames-row {
-    display: flex;
-    gap: 32px;
-    margin: 64px 0 48px 0;
-    align-items: flex-start;
+  .description {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--mid);
+    max-width: 480px;
+    font-weight: 300;
+  }
+
+  .description em {
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  /* frames area — position: relative wrapper, you move frames with top/left */
+  .frames-area {
+    position: relative;
+    height: 280px;
+    margin: 60px 0 20px 0;
   }
 
   .img-frame {
-    border: 1px solid rgba(240,238,248,0.35);
-    background: rgba(240,238,248,0.03);
-    flex-shrink: 0;
+    position: absolute;
+    border: 1px solid rgba(245,243,238,0.5);
+  }
+
+  /* blueprint corner marks */
+  .img-frame::before,
+  .img-frame::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+  }
+
+  .img-frame::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid var(--white);
+    border-left: 2px solid var(--white);
+  }
+
+  .img-frame::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid var(--white);
+    border-right: 2px solid var(--white);
   }
 
   .img-frame-label {
-    font-size: 11px;
-    letter-spacing: 0.15em;
+    font-size: 9px;
+    letter-spacing: 0.2em;
     color: var(--dim);
     padding: 5px 10px;
-    border-bottom: 1px solid rgba(240,238,248,0.15);
+    border-bottom: 1px solid rgba(245,243,238,0.2);
+    font-weight: 300;
   }
 
   .img-frame-body {
@@ -67,39 +114,138 @@
     align-items: center;
     justify-content: center;
     color: var(--dim);
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    opacity: 0.35;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    font-weight: 300;
   }
 
-  .frame-1 { width: 192px; }
-  .frame-1 .img-frame-body { height: 128px; }
+  /* frame sizes and positions — change top/left to move them */
+  .frame-1 { width: 192px; top: 0px; left: 0px; }
+  .frame-1 .img-frame-body { height: 150px; }
 
-  .frame-2 { width: 256px; margin-top: 32px; }
+  .frame-2 { width: 256px; top: 60px; left: 224px; }
   .frame-2 .img-frame-body { height: 160px; }
 
-  .frame-3 { width: 192px; margin-top: 16px; }
-  .frame-3 .img-frame-body { height: 144px; }
+  .frame-3 { width: 160px; top: 20px; left: 512px; }
+  .frame-3 .img-frame-body { height: 130px; }
 
-  .archive-label { font-size: 16px; letter-spacing: 0.18em; color: var(--dim); margin-bottom: 14px; margin-top: 16px; }
+  /* archive */
+  .archive-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--dim);
+    margin-bottom: 16px;
+    margin-top: 20px;
+    font-weight: 300;
+  }
+
   .archive-list { list-style: none; }
-  .archive-list li { display: flex; align-items: baseline; margin-bottom: 6px; }
-  .archive-list li::before { content: attr(data-num); font-size: 16px; color: var(--dim); min-width: 60px; flex-shrink: 0; }
-  .archive-list a { color: var(--white); text-decoration: none; font-size: 22px; letter-spacing: 0.06em; border-bottom: 1px solid transparent; padding-bottom: 1px; transition: color 0.1s, border-color 0.1s; }
-  .archive-list a:hover { color: var(--highlight); border-bottom-color: var(--white); }
-  .arrow { margin-left: 12px; font-size: 18px; color: var(--dim); opacity: 0; display: inline-block; transition: opacity 0.1s, transform 0.1s; }
+
+  .archive-list li {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+
+  .archive-list li::before {
+    content: attr(data-num);
+    font-size: 10px;
+    color: var(--dim);
+    min-width: 56px;
+    flex-shrink: 0;
+    font-weight: 300;
+  }
+
+  .archive-list a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.1s, color 0.1s;
+  }
+
+  .archive-list a:hover {
+    border-bottom-color: rgba(245,243,238,0.5);
+  }
+
+  .arrow {
+    margin-left: 12px;
+    font-size: 12px;
+    color: var(--dim);
+    opacity: 0;
+    display: inline-block;
+    transition: opacity 0.1s, transform 0.1s;
+  }
+
   .archive-list li:hover .arrow { opacity: 1; transform: translateX(4px); }
 
-  .site-footer { margin-top: 52px; }
-  .footer-links { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 18px; }
-  .footer-links a { font-size: 16px; letter-spacing: 0.14em; color: var(--dim); text-decoration: none; transition: color 0.1s; }
-  .footer-links a:hover { color: var(--white); }
-  .footer-note { margin-top: 18px; font-size: 15px; letter-spacing: 0.1em; color: var(--dim); opacity: 0.5; }
+  /* footer */
+  .site-footer { margin-top: 56px; }
 
-  .ascii-section { margin-top: 80px; border-top: 1px solid rgba(240,238,248,0.15); padding-top: 32px; }
-  .ascii-label { font-size: 15px; letter-spacing: 0.15em; color: var(--dim); opacity: 0.6; margin-bottom: 18px; }
-  .ascii-art { font-family: 'VT323', monospace; font-size: 12px; line-height: 1.2; color: rgba(240,238,248,0.3); white-space: pre; overflow-x: auto; letter-spacing: 0.04em; }
-  .ascii-cite { margin-top: 20px; font-size: 14px; letter-spacing: 0.1em; color: var(--dim); opacity: 0.5; }
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  .footer-links a {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--dim);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.1s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-note {
+    margin-top: 16px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    opacity: 0.4;
+    font-weight: 300;
+  }
+
+  /* ascii */
+  .ascii-section {
+    margin-top: 100px;
+    border-top: 1px solid rgba(245,243,238,0.15);
+    padding-top: 32px;
+  }
+
+  .ascii-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .ascii-art {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    line-height: 1.2;
+    color: rgba(245,243,238,0.28);
+    white-space: pre;
+    overflow-x: auto;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .ascii-cite {
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    opacity: 0.4;
+    font-weight: 300;
+  }
+
   .ascii-cite a { color: var(--dim); }
 </style>
 </head>
@@ -108,27 +254,33 @@
 <header>
   <div class="name">DEY POYSER</div>
   <div class="coords">SANTIAGO, CL &nbsp;&nbsp;·&nbsp;&nbsp; 2026</div>
-  <div class="divider">---------------- &nbsp; * &nbsp; ----------------</div>
+  <div class="divider">------------------------------------------------------------</div>
   <p class="description">
     PhD researcher in <em>empirical aesthetics</em>.<br>
-    Journalist. Writer. Editor.<br><br>
+    Journalist. Writer.<br><br>
     Working at the intersection of neuroscience,<br>
     phenomenology, and what it means to be<br>
     moved by a work of art.
   </p>
 </header>
 
-<div class="frames-row">
+<!-- FRAMES AREA
+     To move a frame: change its top and left values in the CSS above
+     e.g. .frame-1 { width: 192px; top: 0px; left: 0px; }
+     top  = distance from top of this area
+     left = distance from left edge
+-->
+<div class="frames-area">
   <div class="img-frame frame-1">
-    <div class="img-frame-label">// IMAGE_001</div>
+    <div class="img-frame-label">// IMG_001</div>
     <div class="img-frame-body">[ — ]</div>
   </div>
   <div class="img-frame frame-2">
-    <div class="img-frame-label">// IMAGE_002</div>
+    <div class="img-frame-label">// IMG_002</div>
     <div class="img-frame-body">[ — ]</div>
   </div>
   <div class="img-frame frame-3">
-    <div class="img-frame-label">// IMAGE_003</div>
+    <div class="img-frame-label">// IMG_003</div>
     <div class="img-frame-body">[ — ]</div>
   </div>
 </div>
@@ -138,18 +290,19 @@
   <ul class="archive-list">
     <li data-num="[001]"><a href="research.html">RESEARCH</a><span class="arrow">→</span></li>
     <li data-num="[002]"><a href="essay.html">ESSAY</a><span class="arrow">→</span></li>
-    <li data-num="[003]"><a href="podcast.html">PODCAST</a><span class="arrow">→</span></li>
-    <li data-num="[004]"><a href="coding.html">CODING</a><span class="arrow">→</span></li>
-    <li data-num="[005]"><a href="about.html">ABOUT</a><span class="arrow">→</span></li>
+    <li data-num="[003]"><a href="coding.html">CODING</a><span class="arrow">→</span></li>
+    <li data-num="[004]"><a href="about.html">ABOUT</a><span class="arrow">→</span></li>
   </ul>
 </main>
 
 <footer class="site-footer">
-  <div class="divider">---------------- &nbsp; * &nbsp; ----------------</div>
+  <div class="divider">------------------------------------------------------------</div>
   <div class="footer-links">
     <a href="https://github.com/deysha" target="_blank">GITHUB</a>
+    <a href="https://www.researchgate.net/profile/Deysha-Poyser" target="_blank">RESEARCHGATE</a>
+    <a href="https://orcid.org/0009-0006-5936-7191" target="_blank">ORCID</a>
     <a href="https://linkedin.com/in/deyshaposer" target="_blank">LINKEDIN</a>
-    <a href="mailto:dlpoyser@uc.cl">CONTACT</a>
+    <a href="mailto:deyshapoyser@gmail.com">CONTACT</a>
   </div>
   <div class="footer-note">DEYSHA.GITHUB.IO &nbsp;·&nbsp; UPDATED 2026</div>
 </footer>
