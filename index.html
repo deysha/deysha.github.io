@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deysha Poyser</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #0d3b9e;
+    --white: #f5f3ee;
+    --dim: rgba(245,243,238,0.45);
+    --mid: rgba(245,243,238,0.7);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--blue);
+    background-image: radial-gradient(circle, rgba(245,243,238,0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: var(--white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 64px 80px 120px;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  .name {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .coords {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--dim);
+    margin-bottom: 36px;
+  }
+
+  .divider {
+    color: var(--dim);
+    margin: 28px 0;
+    font-size: 12px;
+    user-select: none;
+    letter-spacing: 0.05em;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--mid);
+    max-width: 480px;
+    font-weight: 300;
+  }
+
+  /* adjacent sibling selector: adds breathing room between
+     consecutive .description paragraphs only, not the first one */
+  .description + .description {
+    margin-top: 12px;
+  }
+
+  .description em {
+    color: var(--white);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  /* archive */
+  .archive-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--dim);
+    margin-bottom: 16px;
+    margin-top: 48px;
+    font-weight: 300;
+  }
+
+  .archive-list { list-style: none; }
+
+  .archive-list li {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+
+  .archive-list li::before {
+    content: attr(data-num);
+    font-size: 10px;
+    color: var(--dim);
+    min-width: 56px;
+    flex-shrink: 0;
+    font-weight: 300;
+  }
+
+  .archive-list a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.1s, color 0.1s;
+  }
+
+  .archive-list a:hover {
+    border-bottom-color: rgba(245,243,238,0.5);
+  }
+
+  .arrow {
+    margin-left: 12px;
+    font-size: 12px;
+    color: var(--dim);
+    opacity: 0;
+    display: inline-block;
+    transition: opacity 0.1s, transform 0.1s;
+  }
+
+  .archive-list li:hover .arrow { opacity: 1; transform: translateX(4px); }
+
+  /* footer */
+  .site-footer { margin-top: 56px; }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  .footer-links a {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--dim);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.1s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-note {
+    margin-top: 16px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    opacity: 0.4;
+    font-weight: 300;
+  }
+
+  /* ascii */
+  .ascii-section {
+    margin-top: 100px;
+    border-top: 1px solid rgba(245,243,238,0.15);
+    padding-top: 32px;
+  }
+
+  .ascii-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .ascii-art {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    line-height: 1.2;
+    color: rgba(245,243,238,0.28);
+    white-space: pre;
+    overflow-x: auto;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .ascii-cite {
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    opacity: 0.4;
+    font-weight: 300;
+  }
+
+  .ascii-cite a { color: var(--dim); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="name">DEYSHA POYSER</div>
+  <div class="coords">SANTIAGO, CL &nbsp;&nbsp;·&nbsp;&nbsp; 2026</div>
+  <div class="divider">--------------------------------------------------------------------------</div>
+  <p class="description">I do neuroscience and write (and record) essays. I specialise in <em>empirical aesthetics</em>.</p>
+  <p class="description">what must life be like for beauty to exist?</p>
+</header>
+
+<main>
+  <div class="archive-label">// ARCHIVE INDEX</div>
+  <ul class="archive-list">
+    <li data-num="[001]"><a href="research.html">RESEARCH</a><span class="arrow">→</span></li>
+    <li data-num="[002]"><a href="essay.html">ESSAY</a><span class="arrow">→</span></li>
+    <li data-num="[003]"><a href="coding.html">CODING</a><span class="arrow">→</span></li>
+    <li data-num="[004]"><a href="about.html">ABOUT</a><span class="arrow">→</span></li>
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <div class="divider">------------------------------------------------------------</div>
+  <div class="footer-links">
+    <a href="https://github.com/deysha" target="_blank">GITHUB</a>
+    <a href="https://www.researchgate.net/profile/Deysha-Poyser" target="_blank">RESEARCHGATE</a>
+    <a href="https://orcid.org/0009-0006-5936-7191" target="_blank">ORCID</a>
+    <a href="https://www.linkedin.com/in/deysha-poyser-61b486400/" target="_blank">LINKEDIN</a>
+    <a href="mailto:deyshapoyser@gmail.com">CONTACT</a>
+    <a href="https://t.me/doit4theaesthetic">DOIT4THEAESTHETIC</a>
+  </div>
+  <div class="footer-note">DEYSHA.GITHUB.IO &nbsp;·&nbsp; UPDATED 2026</div>
+</footer>
+
+<div class="ascii-section">
+  <div class="ascii-label">////////// I like texts and textures </div>
+  <pre class="ascii-art">
+     .-._
+     J   L-"""-,,__.-"-.-=a.  ,:--"---=.
+      )        P'-    `  ,`88P' `.|   .'
+      L         .-    `.a8 `8: -=a)\__:
+      L         --     .:`  `"a ,`b.`J        .___..=-.           ,-,
+      |          -      .`.   >,   .a(       ( Y:`:"` `ba--.   ,:'  |
+       \_                .:. (8' -'' `)    _J d`,:d(   `Y ` `ada._  J
+       )8\._          8   .:. "=.   )8:   /`. `b`'`":.  `     ":._.-|L
+       :"P=``-        `a   `:.  ``,aP:J   L    `: `  `` . `     `<8 J)
+       (               `a.   `-  ,8"aP| .':.    `. `              _ :(
+       L        ,        `a...::-8aP"dJ:.        :. `    .  ` _ ,'  `P
+      J.a=.      ``,      `"88:::.(``"::.`       `8. .         `-.  /
+       >-. \::.aa.`.'-.      `":(.`,  ,L:.`     . `8. \  `    `:. Y(
+      (   \ \(` `":.',.',      ,`--. .:|:.`.     `=._Y=\  `     ):a)
+      .b     \:    `:. '..` ,,_.::::da`J `"-:.-.-'      `. .   -.a8
+      |`)   . ` _.---':: )`..``':'"="'.a\                 `-.     :
+      L   \):--'       `-'--.:.`.'.` :P' )                   `-. a)
+     /.:=.J                    ```""""-"'                       `-'
+     `'
+
+                              _.-,
+    (`-.                   .-'  /             _.---..___              _
+    \   `-.--.       _--.-'  `..|  _._.--'\a.'    `.::...`=...._,==='".)
+    |     ') `"-":a8aa7  `    ):L (        `"`     `"Y::.,.,..+::.'8:./
+    | __          .Y8'       .:8) `.                    ``""""888ba`8P
+    L_-.`      ..Y"'          P/    L                  ..-..T\`8a."Ya:
+    .P =.      "(:.,'        ,":    |                .:.:'' _J `Yb:'J8:.
+    | -:.   _::;::J+         ,':L    L              a:'' .-'  O`.`"=a8b:>
+    L    `- ''      ,          .J    |            .b::`-'\ -.:a:'  "`::J
+    7be._a   `.:;+::. '        .|    J        .ad8##88a. a\ `J8: :==++-`)
+   ( Y8:.     .)bP"'            J     L      ,.::#P'^T``.8| :88a._  `:):|
+   )\ ""''' .aP'     .c`      .a8      \    ,::.:8: da  88J 88P::'`..::PJ
+   \\     :P' .a:="\ +P .8  , ' (      (     ,")88.J"`-' `LaP"`-,_.`:..-8
+  J   _.:' _:P'     `-'-"-'"-'-=a)      > \,''/8P'              `--""`-._)
+  (_:==--'"                            J' \ ,''           _./\.
+                                       (_.P'             /. `.\
+    .-.                                   _       __   .'`::.  \
+    )  `+-.__        ___..-------'"J  (`-'_`._a-='  "::(   ```.:J
+    J   `   '`-.  _.'   ...._=___`\|   L //  :P+J:    ``+.   :;:J
+     L   .:'  ::''    .:' .       .J   |/'   `L   `-      `- `:.I
+     `P`      `      (:  8P  -., ../   +-,:'  `    .     ,:.  `:.
+      /_=""'          \a8'    `::)bL    (`:.       `:.   :b::=,.`)
+      L =-"           88'   ).. `::L    J `\         `"+. `:+b:::J
+      `L          _ad8b/ ..:a: .a888L    J    ,aa8aaaaa=,_ _``:b8/
+      /`.    ,: .a8:8:(.=:''  adP:)8:     L  aP,-   ``""Y8aa+. )P8\
+      (  `-  (::8d:P:: " .  .P"/ a/:J     `-aP/      .):`.,"' .)>d)
+      (       `+:::;:= Yb . `// 8/ d#8a._   (_`      d:.dPPaaa:##(
+     / \    `-._  `--:. 8) ) ',:P `8P.'a/ .-&lt; `" -   `""__..aa###(
+    /L\_`  .`.:;:;a.  `aP.''+:=..a:P.a8  / \ )    (. ,=::ad',8#YPa:-.
+   &lt;aP-._\ "a...;+::88a8a.\. ``)Pd8aP' ,'       `-`8 aP.d'a:8Pada8P:J
+         `--'""""""     "8a):._)L8P"   \..PPPYaa;'-P'Ya..-"""'''"Y:_/
+                          `    ""
+
+                                    a:f
+  </pre>
+  <div class="ascii-cite">
+    Andreas Freise, ASCII Work (2001) — based on Albrecht Dürer, "Sechs Kissen" (1493) —
+    <a href="https://ascii-art.de/ascii/my/big2.shtml" target="_blank">ascii-art.de</a>
+  </div>
+</div>
+
+</body>
+</html>
