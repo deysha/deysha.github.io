@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Stuff — Dey Poyser</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root { --blue: #0d3b9e; --bg: #f5f3ee; --ink: #0d3b9e; --dim: rgba(13,59,158,0.4); --mid: rgba(13,59,158,0.7); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background-color: var(--bg); background-image: radial-gradient(circle, rgba(13,59,158,0.12) 1px, transparent 1px); background-size: 32px 32px; color: var(--ink); font-family: 'IBM Plex Mono', monospace; font-size: 14px; line-height: 1.6; padding: 64px 80px 120px; min-height: 100vh; width: 100%; }
+  .back { font-size: 11px; letter-spacing: 0.18em; color: var(--dim); text-decoration: none; display: inline-block; margin-bottom: 44px; transition: color 0.1s; font-weight: 300; }
+  .back:hover { color: var(--ink); }
+  .page-title { font-size: 28px; font-weight: 700; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 4px; }
+  .divider { color: var(--dim); margin: 28px 0; font-size: 12px; user-select: none; }
+
+  /* ── THREE-COLUMN GRID ───────────────────────────────────────
+     Each column is independent — entries stack within their column.
+     gap: 48px between columns.
+     On narrow screens it collapses to one column.
+  ─────────────────────────────────────────────────────────── */
+  .research-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  @media (max-width: 640px) { .research-grid { grid-template-columns: 1fr; } }
+
+  /* ── COLUMN ─────────────────────────────────────────────────── */
+  .col-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--dim);
+    font-weight: 300;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(13,59,158,0.2);
+  }
+
+  /* ── ENTRY ──────────────────────────────────────────────────── */
+  .entry {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(13,59,158,0.1);
+  }
+
+  .entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .entry-meta {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    margin-bottom: 6px;
+    font-weight: 300;
+  }
+
+  .entry-title {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .entry-body {
+    font-size: 11px;
+    color: var(--mid);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .entry-body a {
+    color: var(--dim);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(13,59,158,0.2);
+    transition: color 0.1s, border-color 0.1s;
+  }
+
+  .entry-body a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+
+  /* inline status badge */
+  .status {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    border: 1px solid var(--dim);
+    padding: 1px 5px;
+    color: var(--dim);
+    display: inline-block;
+    font-weight: 300;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+
+  /* placeholder for empty sections */
+  .entry-placeholder {
+    font-size: 11px;
+    color: var(--dim);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back">← INDEX</a>
+
+<header>
+  <div class="page-title">RESEARCH STUFF</div>
+</header>
+
+<div class="divider">------------------------------------------------------------</div>
+
+<div class="research-grid">
+
+  <!-- ── COLUMN 1: ARTICLES ──────────────────────────────────── -->
+  <div class="column">
+    <div class="col-label">// ARTICLES</div>
+
+    <div class="entry">
+      <div class="entry-meta">JOURNAL ARTICLE · 2024</div>
+      <div class="entry-title">EEG subject-dependent neurofeedback training selectively impairs declarative memories consolidation process</div>
+      <div class="entry-body">
+        Campos-Arteaga G., Flores Torres J., Rojas-Thomas F., Morales-Torres R., Poyser D., Sitaram R., Rodríguez E., Ruiz S.<br>
+        <em>International Journal of Psychophysiology</em>, 203, 112406.<br>
+        <a href="https://doi.org/10.1016/j.ijpsycho.2024.112406" target="_blank">doi:10.1016/j.ijpsycho.2024.112406</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">JOURNAL ARTICLE · 2021</div>
+      <div class="entry-title">Emotion and purpose in living systems: limits of cybernetics <span class="status">ES</span></div>
+      <div class="entry-body">
+        Poyser D.<br>
+        <em>Cuadernos de Beauchef: Ciencia, Tecnología y Cultura</em>, 5(1). ISSN 2452-493X. Universidad de Chile.
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">JOURNAL ARTICLE · 2021</div>
+      <div class="entry-title">In the end, an image: four plaquettes of Cuadro de Tiza <span class="status">ES</span></div>
+      <div class="entry-body">
+        Poyser D.<br>
+        <em>Revista de Teoría del Arte</em>, 35. ISSN 0719-7276. Universidad de Chile.
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">PREPRINT</div>
+      <div class="entry-placeholder">[ — ]</div>
+    </div>
+
+  </div>
+
+  <!-- ── COLUMN 2: IN VIVO (talks + posters) ─────────────────── -->
+  <div class="column">
+    <div class="col-label">// IN VIVO</div>
+
+    <div class="entry">
+      <div class="entry-meta">TALK · ASSC 2026 · SANTIAGO <span class="status">FORTHCOMING</span></div>
+      <div class="entry-title">The objective dimension of aesthetic experience: artwork and qualia in a neurophenomenological account of being moved by art</div>
+      <div class="entry-body">Poyser D.<br>Association for the Scientific Study of Consciousness — Satellite on Neurophenomenology.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">TALK · MIND &amp; LIFE EUROPE 2024 · CLUSES</div>
+      <div class="entry-title">The sensitive adjustment to the materiality of things: a micro-phenomenological, behavioral and EEG study on visual aesthetic encounters</div>
+      <div class="entry-body">Poyser D.<br>Initiative for Contemplative Phenomenology 2024: Becoming Aware and Micro-phenomenology — Process, Practice, Outcomes.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">POSTER · SOCHIN 2025 · VALDIVIA</div>
+      <div class="entry-title">The art we see reaches our inner selves: EEG microstate dynamics during internal and external visualization</div>
+      <div class="entry-body">Poyser D., Alliende J.D., Villena-González M., Campos-Arteaga G., Rojas-Thomas F., Morales J.P.<br>XXI Annual Meeting of the Chilean Society for Neuroscience.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">POSTER · IBRO 2023 · GRANADA</div>
+      <div class="entry-title">Investigating the impact of EEG subject-dependent neurofeedback on declarative memory consolidation</div>
+      <div class="entry-body">Campos-Arteaga G., Flores Torres J., Morales-Torres R., Poyser D., Sitaram R., Rodriguez E., Ruiz S.<br>11th IBRO World Congress of Neuroscience (FEN).</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">POSTER · SAN 2022 · THESSALONIKI</div>
+      <div class="entry-title">Can subject-dependent neurofeedback modulate memories? Effects of neurofeedback on long-term memory</div>
+      <div class="entry-body">Campos-Arteaga G., Ruiz S., Poyser D., Morales-Torres R., Sitaram R., Rodriguez E.<br>Society of Applied Neuroscience.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">POSTER · SOCHIN 2022 · PUCÓN</div>
+      <div class="entry-title">Using first-person data to describe oscillatory activity: an exploratory study of the neural and experiential dynamics of being moved by artworks</div>
+      <div class="entry-body">Poyser D., Rodriguez E., Campos-Arteaga G.<br>XVIII Reunión Anual Sociedad Chilena de Neurociencia.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">TALK · 2019 · SANTIAGO</div>
+      <div class="entry-title">Phenomenology of life: the role of sentience in the constitution of the identity of living organisms</div>
+      <div class="entry-body">Poyser D.<br>IV National Colloquium of Students of Phenomenology, Chilean Phenomenology Association.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">TALK · 2019 · RECOLETA</div>
+      <div class="entry-title">Phenomenology of life: conjectures on the notion of aesthetic experience</div>
+      <div class="entry-body">Poyser D.<br>Clinical Meeting of the Philosophy Unit, Department of Psychiatry, Clinical Hospital, Universidad de Chile.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-meta">TALK · 2018 · ÑUÑOA</div>
+      <div class="entry-title">Identity in exercise: from Peter Sloterdijk to Francisco Varela</div>
+      <div class="entry-body">Poyser D.<br>VII International Symposium on Aesthetics: Aesthetics and Sport, PUC.</div>
+    </div>
+
+  </div>
+
+</div><!-- /.research-grid -->
+
+</body>
+</html>
